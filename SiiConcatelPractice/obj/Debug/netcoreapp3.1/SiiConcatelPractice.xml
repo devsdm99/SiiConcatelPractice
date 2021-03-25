@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SiiConcatelPractice</name>
+    </assembly>
+    <members>
+        <member name="M:SiiConcatelPractice.Controllers.RebelsController.GetAllRebels">
+            <summary>
+            Gets All the Rebels from the database
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SiiConcatelPractice.Controllers.RebelsController.GetRebelById(System.Int32)">
+            <summary>
+            Gets a Rebel by ID 
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiiConcatelPractice.Controllers.RebelsController.Post(SiiConcatelPractice.Models.RebelList)">
+            <summary>
+            Creates a new Rebel or List of Rebels
+            </summary>
+            <param name="rebels"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiiConcatelPractice.Controllers.RebelsController.Put(SiiConcatelPractice.Models.Rebel)">
+            <summary>
+            Modifies an existing Rebel
+            </summary>
+            <param name="rebel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SiiConcatelPractice.Controllers.RebelsController.Delete(System.Int32)">
+            <summary>
+            Removes a Rebel from database
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
