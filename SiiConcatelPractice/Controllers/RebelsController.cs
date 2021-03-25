@@ -53,8 +53,8 @@ namespace SiiConcatelPractice.Controllers
                 response = BadRequest(new ApiResult()
                 {
                     Message = "There was a problem trying to get all rebels",
-                    IsError = true 
-                }); 
+                    IsError = true
+                });
             }
 
             return response;
@@ -101,7 +101,7 @@ namespace SiiConcatelPractice.Controllers
             }
             catch (InvalidValueException ex)
             {
-                _logger.LogError("There was an error executing RebelsController.GetRebelByid() error: " + ex.Message);              
+                _logger.LogError("There was an error executing RebelsController.GetRebelByid() error: " + ex.Message);
             }
 
             return response;
@@ -113,7 +113,7 @@ namespace SiiConcatelPractice.Controllers
         /// <param name="rebels"></param>
         /// <returns></returns>
         [HttpPost]
-        public ActionResult<IEnumerable<RebelList>> Post([FromBody] RebelList rebels)
+        public ActionResult<ApiResult> Post([FromBody] RebelList rebels)
         {
             _logger.LogInformation("Start of RebelsController.Post()");
             var result = new ApiResult();
@@ -165,7 +165,7 @@ namespace SiiConcatelPractice.Controllers
             _logger.LogInformation("Start of RebelsController.Put()");
             var result = new ApiResult();
             ActionResult response = null;
-          
+
             try
             {
 
@@ -188,7 +188,7 @@ namespace SiiConcatelPractice.Controllers
                         _logger.LogWarning($"The rebel with id {rebel.Id} has not been found");
                         result.Message = $"The rebel with id {rebel.Id} has not been found";
                         result.IsError = true;
-                        response= BadRequest(result);
+                        response = BadRequest(result);
 
                         throw new InvalidValueException("The rebel was not found");
 
@@ -207,11 +207,12 @@ namespace SiiConcatelPractice.Controllers
                         response = Ok(result);
                     }
                 }
-               
 
-            }catch(InvalidValueException ex)
+
+            }
+            catch (InvalidValueException ex)
             {
-                _logger.LogError("An error ocurred while updating "+ ex.Message);
+                _logger.LogError("An error ocurred while updating " + ex.Message);
             }
             _logger.LogInformation("End of RebelsController.Put()");
 
@@ -268,7 +269,8 @@ namespace SiiConcatelPractice.Controllers
                     }
                 }
 
-            }catch(InvalidValueException ex)
+            }
+            catch (InvalidValueException ex)
             {
                 _logger.LogError("An error occurred while Deleted method was running, error :" + ex.Message);
             }

@@ -24,9 +24,9 @@ namespace SiiConcatelPractice.Tests.APIs.Rebels
         {
             _con = new RebelsController(_mockRepo.Object, _logger.Object);
         }
-        
+
         [Fact]
-        public void Delete_Rebel_Successfully()
+        public void Rebel_GetById_Successfully()
         {
             //Arrange
             var rebelId = 20;
@@ -48,8 +48,36 @@ namespace SiiConcatelPractice.Tests.APIs.Rebels
             var actionResult = rebel.Result;
             var apiResult = (actionResult as OkObjectResult).Value as Rebel;
             Assert.NotNull(apiResult);
-            Assert.Equal(rebelId, apiResult.Id);        
+            Assert.Equal(rebelId, apiResult.Id);
         }
+        [Fact]
+        public void Post_Rebel_Successfully()
+        {
+            //Arrange
+            var name = "UnitTest";
+            var planet = "PlanetTest";
+
+            var rebelDto = new Rebel()
+            {
+                Name = name,
+                Planet = planet
+            };
+            var list = new RebelList()
+            {
+                Rebels = new List<Rebel>()
+                {
+                    rebelDto
+                }
+            };
+            //Act
+            var rebel = _con.Post(list);
+
+            //ASSERT
+            var actionResult = rebel.Result;
+            var apiResult = (actionResult as OkObjectResult).Value as ApiResult;
+            Assert.NotNull(apiResult);
+        }
+
 
         [Fact]
         public void GetById_ShouldReturnNothing_WhenRebelDoesNotExist()
@@ -68,36 +96,43 @@ namespace SiiConcatelPractice.Tests.APIs.Rebels
             Assert.Null(apiResult);
         }
 
-
         [Fact]
-        public void GetById_ShouldLogAppropiateMessage_WhenRebelExist()
+        public void Delete_Rebel_Succesfully()
         {
-
             //Arrange
-            var rebelId = 20;
-            var name = "pepe";
-            var planeta = "tierra";
-
-            var rebelDto = new Rebel()
-            {
-                Id = rebelId,
-                Name = name,
-                Planet = planeta
-            };
-            _mockRepo.Setup(x => x.GetRebelById(rebelId)).Returns(rebelDto);
+            var testId = 500;
+            _mockRepo.Setup(r => r.GetRebelById(testId)).Returns(new Rebel { Id = testId });
 
             //Act
-            var rebel = _con.GetRebelById(rebelId);
-
-
-            var actionResult = rebel.Result;
-            var apiResult = (actionResult as OkObjectResult).Value as Rebel;
+            var result = _con.Delete(testId);
 
             //ASSERT
-            _logger.Verify(x => 
-                x.LogInformation("Retrieved a rebel with Id: {Id}", rebelId), Times.Once);
-        }
-    }
 
+            var actionResult = result.Result;
+            Assert.IsType<OkObjectResult>(actionResult);
+            var apiResult = (actionResult as OkObjectResult).Value as ApiResult;
+            Assert.NotNull(apiResult);
+            Assert.Equal("Rebel deleted correctly", apiResult.Message);
+        }
+
+
+        [Fact]
+        public void Delete_Rebel_NotWork()
+        {
+            //Arrange
+            var notFoundId = 500;
+
+            //Act
+            var result = _con.Delete(notFoundId);
+
+            //ASSERT
+            var actionResult = result.Result;
+            Assert.IsType<BadRequestObjectResult>(actionResult);
+            var apiResult = (actionResult as BadRequestObjectResult).Value as ApiResult;
+            Assert.NotNull(apiResult);
+            Assert.Equal($"The rebel with id {notFoundId} has not been found", apiResult.Message);
+        }
+       
+    }
 
 }

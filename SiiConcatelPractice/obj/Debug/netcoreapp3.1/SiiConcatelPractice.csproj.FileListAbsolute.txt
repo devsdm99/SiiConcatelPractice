@@ -6,7 +6,6 @@ E:\C# Repos\SiiConcatelPractice\SiiConcatelPractice\SiiConcatelPractice\bin\Debu
 E:\C# Repos\SiiConcatelPractice\SiiConcatelPractice\SiiConcatelPractice\bin\Debug\netcoreapp3.1\SiiConcatelPractice.runtimeconfig.dev.json
 E:\C# Repos\SiiConcatelPractice\SiiConcatelPractice\SiiConcatelPractice\bin\Debug\netcoreapp3.1\SiiConcatelPractice.dll
 E:\C# Repos\SiiConcatelPractice\SiiConcatelPractice\SiiConcatelPractice\bin\Debug\netcoreapp3.1\SiiConcatelPractice.pdb
-E:\C# Repos\SiiConcatelPractice\SiiConcatelPractice\SiiConcatelPractice\obj\Debug\netcoreapp3.1\SiiConcatelPractice.csprojAssemblyReference.cache
 E:\C# Repos\SiiConcatelPractice\SiiConcatelPractice\SiiConcatelPractice\obj\Debug\netcoreapp3.1\SiiConcatelPractice.AssemblyInfoInputs.cache
 E:\C# Repos\SiiConcatelPractice\SiiConcatelPractice\SiiConcatelPractice\obj\Debug\netcoreapp3.1\SiiConcatelPractice.AssemblyInfo.cs
 E:\C# Repos\SiiConcatelPractice\SiiConcatelPractice\SiiConcatelPractice\obj\Debug\netcoreapp3.1\SiiConcatelPractice.csproj.CoreCompileInputs.cache
